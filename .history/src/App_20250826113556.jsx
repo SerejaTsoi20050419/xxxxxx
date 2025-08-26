@@ -5,6 +5,7 @@ function App() {
   const [filter, setFilter] = useState("all"); // all | active | completed
   const [newTask, setNewTask] = useState("");
 
+  // Добавление задачи
   const addTask = () => {
     if (newTask.trim() === "") return;
     setTasks([
@@ -33,7 +34,7 @@ function App() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "active") return !task.completed;
     if (filter === "completed") return task.completed;
-    return true; 
+    return true; // all
   });
 
   const activeCount = tasks.filter((task) => !task.completed).length;
@@ -83,6 +84,7 @@ function App() {
         ))}
       </ul>
 
+      {/* Нижняя панель */}
       {tasks.length > 0 && (
         <div
           className="footer"

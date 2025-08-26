@@ -5,6 +5,7 @@ function App() {
   const [filter, setFilter] = useState("all"); // all | active | completed
   const [newTask, setNewTask] = useState("");
 
+  // Добавление задачи
   const addTask = () => {
     if (newTask.trim() === "") return;
     setTasks([
@@ -33,15 +34,17 @@ function App() {
   const filteredTasks = tasks.filter((task) => {
     if (filter === "active") return !task.completed;
     if (filter === "completed") return task.completed;
-    return true; 
+    return true; // all
   });
 
+  // Счётчик активных
   const activeCount = tasks.filter((task) => !task.completed).length;
 
   return (
     <div className="todo-app" style={{ maxWidth: "400px", margin: "20px auto" }}>
       <h1>To-Do App</h1>
 
+      {/* Добавление задач */}
       <input
         type="text"
         value={newTask}
@@ -54,6 +57,7 @@ function App() {
         Добавить
       </button>
 
+      {/* Список задач */}
       <ul style={{ listStyle: "none", padding: 0 }}>
         {filteredTasks.map((task) => (
           <li
@@ -83,6 +87,7 @@ function App() {
         ))}
       </ul>
 
+      {/* Нижняя панель */}
       {tasks.length > 0 && (
         <div
           className="footer"

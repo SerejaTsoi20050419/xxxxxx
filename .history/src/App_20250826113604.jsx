@@ -5,6 +5,7 @@ function App() {
   const [filter, setFilter] = useState("all"); // all | active | completed
   const [newTask, setNewTask] = useState("");
 
+  // Добавление задачи
   const addTask = () => {
     if (newTask.trim() === "") return;
     setTasks([
